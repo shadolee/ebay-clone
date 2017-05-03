@@ -1,0 +1,42 @@
+%h1 Products
+
+.row
+  %ul.list-unstyled
+    - @products.each do |product|
+      %li.col-md-3
+        %h2= link_to product.name, product
+        %p
+          =link_to product do
+            = image_tag product.image, height: 200
+          = link_to 'Edit', edit_product_path(product)
+          = link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }
+
+.row
+  %p
+
+= link_to 'New Product', new_product_path
+
+-# ########### html.erb version
+-# <h1>Products</h1>
+-# <div class="row">
+-#   <ul class="list-unstyled">
+-#     <% @products.each do |product| %>
+-#       <li class="col-md-3">
+-#         <h2>
+-#           <%= link_to product.name, product %>
+-#         </h2>
+-#         <p>
+-#           <%= link_to product do %>
+-#             <%= image_tag product.image, height: 200 %>
+-#           <% end %>
+-#           <%= link_to 'Edit', edit_product_path(product) %>
+-#           <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+-#         </p>
+-#       </li>
+-#     <% end %>
+-#   </ul>
+-# </div>
+-# <div class="row">
+-#   <p></p>
+-# </div>
+-# <%= link_to 'New Product', new_product_path %>
