@@ -60,6 +60,7 @@ class ProductsController < ApplicationController
       format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
 
     def transfer
       product = Product.find params[:id]
@@ -68,7 +69,8 @@ class ProductsController < ApplicationController
        redirect_to product_path, notice: "Successfully transferred the product."
      else
        redirect_to product, alert: "The auction hasn't ended yet."
-  end
+     end
+   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -80,4 +82,4 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(:name, :image)
     end
-end
+  end 

@@ -1,3 +1,4 @@
+
 -if @product.has_auction?
   -if @product.auction.ended?
     =render "auctions/status"
@@ -19,3 +20,14 @@
       %p
         =f.text_field :value
         =f.button class: "btn btn-primary"
+  :javascript
+    $(function() {
+      var user_id = "#{current_user.id}";
+      var auction_id = "#{@product.auction.id}";
+      var form = $("#new_bid");
+      var auctionSocket = new AuctionSocket(
+        user_id,
+        auction_id,
+        form
+      );
+    });
